@@ -4,7 +4,7 @@ An end-to-end recommender-system project that implements, evaluates, and deploys
 approaches** on an online-course enrollment dataset — and finds that most of them lose to a trivial
 popularity baseline.
 
-**[▶ Live demo](REPLACE_WITH_STREAMLIT_LINK)** · built from the IBM/Coursera Machine Learning Capstone,
+**[▶ Live demo](https://course-recommender-system-dlrwwyqrh9vvstfxaf79wn.streamlit.app/)** · built from the IBM/Coursera Machine Learning Capstone,
 then re-engineered into a reproducible, tested, deployable system.
 
 > The demo may take a few seconds to wake on first load — it runs on Streamlit Community Cloud's free tier,
