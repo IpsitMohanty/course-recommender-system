@@ -1,0 +1,7 @@
+### Runtime dependencies for the deployed Streamlit app (app.py) only.
+### The app reads precomputed parquet/CSV files -- it never imports src/models/
+### or fits anything, so it does NOT need TensorFlow, scikit-surprise, scikit-learn,
+### gensim, nltk, etc. Those are precompute/eval-only: see requirements-precompute.txt.
+streamlit==1.59.2
+pandas==3.0.3
+pyarrow==24.0.0  # streamlit 1.59.2 requires pyarrow<25,>=7.0

@@ -1,0 +1,309 @@
+COURSE_ID,TITLE
+ML0201EN,robots are coming  build iot apps with watson  swift  and node red
+ML0122EN,accelerating deep learning with gpu
+GPXX0ZG0EN,consuming restful services using the reactive jax rs client
+RP0105EN,analyzing big data in r using apache spark
+GPXX0Z2PEN,containerizing  packaging  and running a spring boot application
+CNSC02EN,cloud native security conference  data security
+DX0106EN,data science bootcamp with r for university proffesors
+GPXX0FTCEN,learn how to use docker containers for iterative development
+RAVSCTEST1,scorm test course
+GPXX06RFEN,create your first mongodb database
+GPXX0SDXEN,testing microservices with the arquillian managed container
+CC0271EN,cloud pak for integration essentials
+WA0103EN,watson analytics for social media
+DX0108EN,data science bootcamp with python for university professors  advance
+GPXX0PICEN,create a cryptocurrency trading algorithm in python
+DAI101EN,data   ai essentials
+GPXX0W7KEN,securing java microservices with eclipse microprofile json web token  microprofile jwt 
+GPXX0QR3EN,enabling distributed tracing in microservices with zipkin
+BD0145EN,sql access for hadoop
+HCC105EN,ybrid cloud conference  ai pipelines lab
+DE0205EN,dataops methodology
+DS0132EN,data   ai  jumpstart your journey
+OS0101EN,introduction to open source
+DS0201EN,end to end data science on cloudpak for data
+BENTEST4,ai for everyone  master the basics
+CC0210EN,serverless computing using cloud functions   developer i
+PA0103EN,predicting customer satisfaction
+HCC104EN,hybrid cloud conference serverless lab
+GPXX0A1YEN,validating constraints for javabeans in java microservices
+TMP0105EN,getting started with the data  apache spark makers build
+PA0107EN,predicting financial performance of a company
+DB0113EN,db2 fundamentals i
+PA0109EN,using clustering methods for investment portfolio analysis
+PHPM002EN,php web application on a lamp stack
+GPXX03HFEN,fundamentals of javascript through rock paper scissors
+RP0103,using r with databases
+RP0103EN,using r with databases
+BD0212EN,spark fundamentals ii
+GPXX0IBEN,data science in insurance  basic statistical analysis 
+SECM03EN,apply end to end security to a cloud application
+SC0103EN,spark overview for scala analytics
+GPXX0YXHEN,testing a microprofile or jakarta ee application using microshed testing with an open liberty docker container
+RP0151EN,r 101
+TA0105,text analytics 101
+SW0201EN,how to build watson ai and swift apis and make money
+TMP0106,tmp data science bootcamp
+GPXX0BUBEN,insurance risk assessment with montecarlo method using apache spark 
+ST0201EN,statistics 201
+ST0301EN,statistics 301
+SW0101EN,build swift mobile apps with watson ai services
+TMP0101EN,text analysis
+DW0101EN,introduction to machine learning with sound
+BD0143EN,using hbase for real time access to your big data
+WA0101EN,watson analytics 101
+GPXX04HEEN,insurance business modelling and basic actuarial calculations
+BD0141EN,accessing hadoop data using hive
+CO0401EN,beyond the basics  istio and ibm cloud kubernetes service
+ML0122ENv1,accelerating deep learning with gpu
+BD0151EN,text analytics 101
+TA0106EN,text analytics at scale
+TMP107,data science bootcamp with python
+ML0111EN,machine learning with apache systemml
+GPXX048OEN,action classification task based on internet firewall logs
+CO0201EN,container   kubernetes essentials with ibm cloud
+GPXX01DCEN,data science in health care  advanced prognostication using neural networks
+GPXX04XJEN,advanced machine   deep learning for spam classification task
+GPXX0JZ4EN,visual data analysis in banking
+GPXX0ZYVEN,secure analysis of credit card dataset
+GPXX0ZMZEN,data science in health care  advanced machine learning classification
+GPXX0742EN,network traffic anomaly detection  intrusion detection task 
+GPXX0KV4EN,getting started with node js
+GPXX01RYEN,getting started with mysql command line
+CC0120EN,an introduction to ibm cloud satellite
+QC0101EN,introduction to quantum computing
+GPXX0YMEEN,launch an ai hotdog detector as a serverless python app
+GPXX0Q8AEN,exploratory data analysis  eda  with pandas in banking
+TA0105EN,text analytics 101
+GPXX0XFQEN,create tables and load data in mysql using phpmyadmin
+GPXX07REN,relational model concepts
+PA0101EN,predictive modeling fundamentals i
+BC0202EN,build an iot blockchain network for a supply chain
+BC0101EN,blockchain essentials
+GPXX0725EN,getting started with postgresql command line
+BC0201EN,ibm blockchain foundation developer
+GPXX0MIIEN,keys and constraints in mysql
+BD0223EN,exploring spark s graphx
+GPXX0435EN,data science in health care  basic statistical analysis 
+GPXX06ZLEN,create tables and load data in postgresql using pgadmin
+GPXX0QS6EN,monitoring the metrics of java microservices using eclipse microprofile metrics
+GPXX07YGEN,configuring microservices running in kubernetes
+AI0111EN,game playing ai with swift for tensorflow  s4tf 
+GPXX0QJFEN,enabling cross origin resource sharing  cors  in a restful java microservice
+GPXX0LLEEN,getting started with db2 on cloud
+BD0121EN,apache pig 101
+BD0135EN,developing distributed applications using zookeeper
+BD0133EN,controlling hadoop jobs using oozie
+BD0131EN,moving data into hadoop
+BD0115EN,mapreduce and yarn
+GPXX04V3EN,deploy a web server using python and ibm cloud engine
+GPXX05P1EN,acknowledging messages using microprofile reactive messaging
+GPXX0D14EN,build a personal movie recommender with django
+GPXX0G3KEN,managing and injecting dependencies into java microservices using contexts and dependency injection  cdi 
+BD0211EN,spark fundamentals i
+GPXX0HZ2EN,deploying microservices to kubernetes
+GPXX04TNEN,getting started with open liberty
+GPXX0IHMEN,consuming restful java microservices asynchronously using eclipse microprofile rest client
+ST0101EN,statistics 101
+BD0153EN,analyzing big data with a spreadsheet ui
+DP0101EN,openrefine 101
+BD0137EN,solr 101
+ML0120EN,deep learning with tensorflow
+GPXX0E3QEN,building fault tolerant microservices with the  fallback annotation
+GPXX0XV3EN,consuming restful java microservices with template interfaces using eclipse microprofile rest client
+CB0201EN,build chatbots with watson assistant
+CB0105ENv1,node red  basics to bots
+GPXX0NHZEN,normalization   keys   constraints in relational database
+CL0101EN,ibm cloud essentials
+CO0301EN,getting started with microservices with istio and ibm cloud kubernetes service
+GPXX0XENEN,playing tictactoe with reinforcement learning and openai gym
+GPXX0HAAEN,deploying a microservice to openshift by using a kubernetes operator
+DA0201EN,data analysis demos
+DJ0101EN,data journalism  first steps  skills and tools
+CP0101EN,mathematical optimization for business problems
+DB0111EN,db2 academic training
+DB0115EN,db2 fundamentals ii
+COM001EN,scalable web applications on kubernetes
+DA0151EN,data analysis using r 101
+DB0151EN,nosql and dbaas 101
+CO0302EN,kubernetes operators advanced
+GPXX0T0FEN,project  deploy a serverless app for image processing
+DS0107,data science career talks
+DS0110EN,data science with open data
+DX0107EN,data science bootcamp with python for university professors
+DS0321EN,bitcoin 101
+DS0105EN,data science hands on with open source tools
+DS0103EN,data science methodology
+GPXX0I4FEN,creating asynchronous java microservices using microprofile reactive messaging
+GPXX06KEEN,build a smart search form with algolia
+GPXX0YBFEN,documenting restful apis using microprofile openapi
+LB0109ENv1,reactive architecture  distributed messaging patterns
+GPXX0KHHEN,data science in agriculture  land use classification
+LB0111EN,reactive architecture  cqrs   event sourcing
+ML0115EN,deep learning 101
+LB0105ENv1,reactive architecture  reactive microservices
+LB0103ENv1,reactive architecture  domain driven design
+IT0101EN,building robots with tjbot
+CC0250EN,building cloud native and multicloud applications
+BD0101EN,big data 101
+EE0101EN,modernizing java ee applications
+GPXX04P5EN,data science in agriculture  prognostication using by neural network
+CO0101EN,docker essentials  a developer introduction
+ML0122ENv3,accelerating deep learning with gpus
+LB0107ENv1,reactive architecture  building scalable systems
+CB0101EN,build your own chatbots
+GPXX0PG8EN,data science in agriculture  basic statistical analysis and geo visualisation
+ML0101EN,machine learning with python
+CB0103EN,build your own chatbot
+ML0109EN,machine learning   dimensionality reduction
+ML0101ENv3,machine learning with python
+GPXX0M7ZEN,consuming a restful java web service using json b and json p
+CC0121EN,an introduction to ibm cloud for financial services
+DA0101EN,data analysis with python
+GPXX07UGEN,testing reactive java microservices using microshed testing framework
+GPXX0QU9EN,checking the health of java microservices by using kubernetes readiness and liveness probes
+SC0101EN,scala 101
+GPXX0QTEEN,checking the health of java microservices by using eclipse microprofile health check
+GPXX0WTIEN,train a hotdog image recognition model with python
+GPXX08WYEN,externalizing configuration for java microservices using eclipse microprofile config
+GPXX0UMSEN,integrating restful services with a reactive system
+GPXX0M6UEN,using the cql shell to execute keyspace operations in cassandra
+GPXX097UEN,performing table and crud operations with cassandra
+SN0111EN,how to create and publish guided projects and hands on labs
+GPXX0JGFEN,building a simple restful java microservice using jax rs and json b
+CO0193EN,hybrid cloud conference   backend services for containers
+GPXX0HC7EN,transform photos to sketches and paintings with opencv
+GPXX04MXEN,quick introduction to a b testing
+DS0101EN,introduction to data science
+LB0101ENv1,reactive architecture  introduction to reactive systems
+DS0301EN,data privacy fundamentals
+GPXX0RL8EN,consuming a restful java web service with angularjs
+GPXX05LMEN,implement consumer driven contract testing for java microservices using the pact framework
+BD0111EN,hadoop 101
+CC0101EN,introduction to cloud
+GPXX0UN5EN,classification of yelp reviews using sentiment analysis
+BD0221EN,spark mllib
+CC0103EN,ibm cloud essentials   v3
+GPXX0TY1EN,performing database operations in the cloudant dashboard
+GPXX0T3CEN,working with databases in ibm cloudant
+PY0101EN,python for data science
+CC0201EN,introduction to containers  kubernetes  and openshift v2
+BD0123EN,simplifying data pipelines with apache kafka
+DB0101EN,sql and relational databases 101
+GPXX05RDEN,medical appointment data analysis
+DV0151EN,data visualization with r
+GPXX0BSAEN,implementing a graphql microservice using microprofile api to query and update data from multiple services
+GPXX0G81EN,consuming a restful java web service with reactjs
+GPXX0FFCEN,building and testing a java web application with maven and open liberty
+GPXX0MP0EN,building a hypermedia driven restful java microservice using hypermedia as the engine of application state  hateoas 
+DV0101EN,data visualization with python
+ML0103EN,digital analytics   regression
+ML0151EN,machine learning with r
+GPXX01AVEN,containerizing and running java microservices in docker containers
+ML0120ENv2,deep learning with tensorflow
+RP0101EN,r for data science
+GPXX0G31EN,accessing and persisting data in microservices using java persistence api  jpa 
+GPXX0KY1EN,data science in health care  basic prognostication and geo visualization
+GPXX0JLHEN,enabling distributed tracing in java microservices using eclipse microprofile opentracing and the jaeger tracing system 
+CC0150EN,building cloud native and multicloud applications
+GPXX0QQ3EN,deploy an ai powered discord bot with a voice
+GPXX0RQLEN,views in postgresql
+GPXX0WRDEN,streaming updates from a microprofile reactive messaging microservice using server sent events  sse 
+GPXX0ADEN,consuming a restful java web service with angular
+ML0120ENv3,deep learning with tensorflow
+SC0105EN,data science with scala
+excourse01,relational database systems
+excourse02,business intelligence and data warehousing
+excourse03,nosql systems
+excourse04,sql for data science
+excourse05,"
+distributed computing with spark sql"
+excourse06,sql for data science capstone project
+excourse07,database management essentials
+excourse08,using databases with python
+excourse09,process data from dirty to clean
+excourse10,database architecture  scale  and nosql with elasticsearch
+excourse11,the nature of data and relational database design
+excourse12,python scripting  files  inheritance  and databases
+excourse13,relational database support for data warehouses
+excourse14,introduction to structured query language  sql 
+excourse15,crash course on python
+excourse16,programming for everybody  getting started with python 
+excourse17,python basics
+excourse18,python programming  a concise introduction
+excourse19,introduction to python programming
+excourse20,python and statistics for financial analysis
+excourse21,applied machine learning in python
+excourse22,introduction to data science in python
+excourse23,data analysis using python
+excourse24,introduction to cloud computing
+excourse25,cloud computing basics  cloud 101 
+excourse26,cloud computing foundations
+excourse27,cloud computing concepts  part 1
+excourse28,fundamentals of cloud computing
+excourse29,cloud computing concepts  part 2
+excourse30,cloud computing applications  part 1  cloud systems and infrastructure
+excourse31,cloud computing applications  part 2  big data and applications in the cloud
+excourse32,introduction to data analytics
+excourse33,excel basics for data analysis
+excourse34,introduction to data analysis
+excourse35,introduction to predictive modeling
+excourse36,data analysis using python
+excourse37,data analysis with r programming
+excourse38,data analysis with python
+excourse39,excel fundamentals for data analysis
+excourse40,exploratory data analysis for machine learning
+excourse41,introduction to data analysis using excel
+excourse42,big data analysis  hive  spark sql  dataframes and graphframes
+excourse43,cloud virtualization  containers and apis
+excourse44,alibaba cloud native solutions and container service
+excourse45,docker  basics
+excourse46,machine learning
+excourse47,machine learning for all
+excourse48,introduction to machine learning  language processing
+excourse49,applied machine learning in python
+excourse50,build  train  and deploy ml pipelines using bert
+excourse51,introduction to machine learning in production
+excourse52,machine learning data lifecycle in production
+excourse53,deploying machine learning models in production
+excourse54,exploratory data analysis for machine learning
+excourse55,advanced computer vision with tensorflow
+excourse56,deep learning applications for computer vision
+excourse57,deep learning in computer vision
+excourse58,computer vision basics
+excourse59,fundamentals of digital image and video processing
+excourse60,introduction to tensorflow for artificial intelligence  machine learning  and deep learning
+excourse61,convolutional neural networks in tensorflow
+excourse62,introduction to data science in python
+excourse63,a crash course in data science
+excourse64,data science in real life
+excourse65,data science fundamentals for data analysts
+excourse66,executive data science capstone
+excourse67,introduction to big data
+excourse68,big data modeling and management systems
+excourse69,machine learning with big data
+excourse70,big data   capstone project
+excourse71,big data essentials  hdfs  mapreduce and spark rdd
+excourse72,foundations for big data analysis with sql
+excourse73,analyzing big data with sql
+excourse74,fundamentals of big data
+excourse75,hadoop platform and application framework
+excourse76,working with big data
+excourse77,natural language processing with attention models
+excourse78,natural language processing with sequence models
+excourse79,natural language processing with probabilistic models
+excourse80,r programming
+excourse81,data analysis with r programming
+excourse82,getting started with data visualization in r
+excourse83,introduction to probability and data with r
+excourse84,using r for regression and machine learning in investment 
+excourse85,data visualization in r with ggplot2
+excourse86,the r programming environment
+excourse87,html  css  and javascript for web developers
+excourse88,javascript basics
+excourse89,javascript  jquery  and json
+excourse90,programming foundations with javascript  html and css
+excourse91,front end web development with react
+excourse92,introduction to web development
+excourse93,interactivity with javascript and jquery

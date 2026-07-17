@@ -1,0 +1,17 @@
+### Dependencies for src/models/, src/evaluation.py, scripts/precompute_app_recommendations.py,
+### the notebooks, and tests/ -- NOT needed by the deployed Streamlit app (see requirements.txt).
+### Heavy: TensorFlow and scikit-surprise alone are 300+ MB, which is why the app has its own
+### light requirements.txt instead of installing all of this at serve time.
+-r requirements.txt
+
+numpy==2.4.6
+scikit-learn==1.9.0
+scipy==1.17.1
+tensorflow==2.21.0
+scikit-surprise==1.1.5
+gensim==4.4.0
+nltk==3.10.0
+wordcloud==1.9.6
+seaborn==0.13.2
+matplotlib==3.11.0
+pytest==9.1.1

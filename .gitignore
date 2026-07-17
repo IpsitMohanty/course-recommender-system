@@ -1,0 +1,29 @@
+# Virtual environments
+.venv/
+.venv-tf/
+
+# Python / test cruft
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+
+# Claude Code tool-local config (not project content)
+.claude/
+
+# Regenerable pipeline artifacts (superseded by src/evaluation.py and the app's
+# precomputed data/app_recommendations/ -- see README for how to regenerate)
+data/predictions/
+data/user_embeddings.csv
+data/user_embeddings_full.csv
+data/user_embeddings_train.csv
+data/course_embeddings.csv
+data/course_embeddings_full.csv
+data/course_embeddings_train.csv
+data/courses_bows.csv
+data/sim.csv
+data/user_profile.csv
