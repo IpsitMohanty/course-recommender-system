@@ -1,0 +1,78 @@
+name: Keep Streamlit Apps Awake
+
+on:
+  schedule:
+    # Every 6 hours. Streamlit Community Cloud sleeps an app after ~12h with
+    # no real browser session, so this gives ample margin even if GitHub
+    # runs a scheduled trigger late under load.
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  keep-awake:
+    runs-on: ubuntu-latest
+    # Two apps x up to ~5min each for a cold wake, plus setup. Caps a hung
+    # browser well short of burning real minutes.
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Playwright
+        run: |
+          pip install playwright==1.61.0
+          playwright install --with-deps chromium
+
+      - name: Run keep-awake script
+        run: python scripts/keep_awake.py --screenshot-dir keep_awake_screenshots
+
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: keep-awake-failure-screenshots
+          path: keep_awake_screenshots/
+          retention-days: 14
+
+      # GitHub auto-disables scheduled workflows on a repo with no commit
+      # activity for 60 days. This workflow otherwise commits nothing, so it
+      # could silently switch itself off. Fix: touch a timestamp file, but
+      # only commit it when it's actually gone stale (>=7 days) rather than
+      # on every run, to avoid commit spam. Runs via `always()` so it still
+      # keeps the repo active even on a run where waking the apps failed.
+      - name: Refresh keepalive timestamp (weekly, prevents 60-day auto-disable)
+        id: keepalive
+        if: always()
+        run: |
+          mkdir -p .github
+          FILE=.github/last-keepalive
+          NOW_EPOCH=$(date -u +%s)
+          if [ -f "$FILE" ]; then
+            LAST=$(cat "$FILE")
+            LAST_EPOCH=$(date -u -d "$LAST" +%s 2>/dev/null || echo 0)
+          else
+            LAST_EPOCH=0
+          fi
+          DIFF_DAYS=$(( (NOW_EPOCH - LAST_EPOCH) / 86400 ))
+          echo "days since last keepalive commit: $DIFF_DAYS"
+          if [ "$DIFF_DAYS" -ge 7 ]; then
+            date -u +%Y-%m-%dT%H:%M:%SZ > "$FILE"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit keepalive timestamp
+        if: steps.keepalive.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/last-keepalive
+          git commit -m "chore: weekly keepalive commit to prevent Actions auto-disable [skip ci]"
+          git push
