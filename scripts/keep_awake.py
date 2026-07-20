@@ -57,6 +57,11 @@ TARGETS = [
         url="https://awc-operations-dashboard.streamlit.app",
         heading="AWC Operations Dashboard",
     ),
+    Target(
+        name="cnn-vit-land-classification",
+        url="https://cnn-vit-land-classification.streamlit.app/",
+        heading="Satellite Land Classification (CNN, ONNX)",
+    ),
 ]
 
 

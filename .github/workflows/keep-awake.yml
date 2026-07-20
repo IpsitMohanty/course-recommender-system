@@ -14,9 +14,9 @@ permissions:
 jobs:
   keep-awake:
     runs-on: ubuntu-latest
-    # Two apps x up to ~5min each for a cold wake, plus setup. Caps a hung
-    # browser well short of burning real minutes.
-    timeout-minutes: 20
+    # Three apps x up to ~4min each for a cold wake (RENDER_POLL_TIMEOUT_S),
+    # plus setup. Caps a hung browser well short of burning real minutes.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
 
