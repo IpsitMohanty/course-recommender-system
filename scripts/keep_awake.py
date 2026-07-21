@@ -62,6 +62,11 @@ TARGETS = [
         url="https://cnn-vit-land-classification.streamlit.app/",
         heading="Satellite Land Classification (CNN, ONNX)",
     ),
+    Target(
+        name="rag-ingestion-evaluation",
+        url="https://rag-ingestion-evaluation.streamlit.app",
+        heading="RAG Ingestion Evaluation",
+    ),
 ]
 
 

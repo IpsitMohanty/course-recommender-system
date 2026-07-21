@@ -14,9 +14,13 @@ permissions:
 jobs:
   keep-awake:
     runs-on: ubuntu-latest
-    # Three apps x up to ~4min each for a cold wake (RENDER_POLL_TIMEOUT_S),
-    # plus setup. Caps a hung browser well short of burning real minutes.
-    timeout-minutes: 25
+    # Four apps x up to ~4min each for a cold wake (RENDER_POLL_TIMEOUT_S),
+    # plus nav/session-hold overhead per app and Playwright setup. The
+    # rag-ingestion-evaluation target loads a prebuilt Chroma index plus an
+    # ~87MB ONNX model at startup, so its cold wake can run closer to the
+    # render-poll ceiling than the other three. Caps a hung browser well
+    # short of burning real minutes.
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
 
