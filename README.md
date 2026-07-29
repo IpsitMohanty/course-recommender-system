@@ -1,5 +1,7 @@
 # Course Recommender: A Comparative Study of Nine Recommendation Approaches
 
+[![tests](https://github.com/IpsitMohanty/course-recommender-system/actions/workflows/tests.yml/badge.svg)](https://github.com/IpsitMohanty/course-recommender-system/actions/workflows/tests.yml)
+
 An end-to-end recommender-system project that implements, evaluates, and deploys **nine recommendation
 approaches** on an online-course enrollment dataset — and finds that most of them lose to a trivial
 popularity baseline.
