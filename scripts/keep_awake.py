@@ -19,11 +19,13 @@ top-level page (no iframe).
 """
 
 import argparse
+import os
 import re
 import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Optional
 
 from playwright.sync_api import Page
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
@@ -36,6 +38,8 @@ NAV_TIMEOUT_MS = 60_000  # generous: a cold app's initial static page can be slo
 WAKE_CLICK_SETTLE_MS = 3_000
 RENDER_POLL_TIMEOUT_S = 240  # observed empirically: a cold wake can take several minutes
 RENDER_POLL_INTERVAL_S = 4
+LOGIN_POLL_TIMEOUT_S = 120  # cold app start + Streamlit rerun after submitting the password
+LOGIN_POLL_INTERVAL_S = 3
 SESSION_HOLD_S = 12  # keep the tab open so the session isn't torn down instantly
 
 
@@ -44,6 +48,10 @@ class Target:
     name: str
     url: str
     heading: str  # exact text of the real app's own <h1>, proof it rendered
+    # Set for password-gated targets: the env var holding the password to submit.
+    # heading must be text that ONLY appears post-login (not on the login screen
+    # itself), or wait_for_app_render will report success while still logged out.
+    password_env_var: Optional[str] = None
 
 
 TARGETS = [
@@ -66,6 +74,15 @@ TARGETS = [
         name="rag-ingestion-evaluation",
         url="https://rag-ingestion-evaluation.streamlit.app",
         heading="RAG Ingestion Evaluation",
+    ),
+    Target(
+        name="cv-tracker",
+        url="https://cv-tracker.streamlit.app",
+        # The login screen's own <h1> is plain "CV Tracker" (no emoji) -- matching
+        # on the emoji-prefixed post-login title avoids a false-positive render
+        # check that would pass while the password gate is still showing.
+        heading="\U0001F4CA CV Tracker",
+        password_env_var="CV_TRACKER_PASSWORD",
     ),
 ]
 
@@ -94,6 +111,32 @@ def wait_for_app_render(page: Page, expected_heading: str, timeout_s: int) -> st
     raise TimeoutError(f"'{expected_heading}' never rendered within {timeout_s}s")
 
 
+def log_in(page: Page, target: Target, timeout_s: int) -> None:
+    """Fill and submit a Streamlit password gate for targets that need one."""
+    password = os.environ.get(target.password_env_var)
+    if not password:
+        raise RuntimeError(
+            f"{target.password_env_var} is not set -- cannot log in to {target.name}"
+        )
+
+    deadline = time.monotonic() + timeout_s
+    while time.monotonic() < deadline:
+        for frame in page.frames:
+            if EXCLUDED_FRAME_HOST in frame.url:
+                continue
+            try:
+                pwd_input = frame.locator('input[type="password"]')
+                if pwd_input.count() > 0 and pwd_input.first.is_visible():
+                    pwd_input.first.fill(password)
+                    frame.get_by_role("button", name="Login").first.click()
+                    page.wait_for_timeout(WAKE_CLICK_SETTLE_MS)
+                    return
+            except Exception:
+                continue
+        page.wait_for_timeout(LOGIN_POLL_INTERVAL_S * 1000)
+    raise TimeoutError(f"password gate never appeared for {target.name} within {timeout_s}s")
+
+
 def process_target(browser, target: Target, screenshot_dir: Path) -> bool:
     """Wake/verify one target. Never raises -- failures are caught and logged."""
     print(f"\n=== {target.name} ({target.url}) ===", flush=True)
@@ -117,6 +160,11 @@ def process_target(browser, target: Target, screenshot_dir: Path) -> bool:
         else:
             print("  status: already awake (no wake button found)")
 
+        if target.password_env_var:
+            print("  password-gated target -- waiting for login form")
+            log_in(page, target, LOGIN_POLL_TIMEOUT_S)
+            print("  submitted credentials")
+
         heading_text = wait_for_app_render(page, target.heading, RENDER_POLL_TIMEOUT_S)
         print(f"  rendered: found heading '{heading_text}'")
         print(f"  holding session open for {SESSION_HOLD_S}s so it registers")
@@ -128,13 +176,19 @@ def process_target(browser, target: Target, screenshot_dir: Path) -> bool:
 
     except Exception as exc:
         print(f"  FAILURE: {exc}")
-        screenshot_dir.mkdir(parents=True, exist_ok=True)
-        screenshot_path = screenshot_dir / f"{target.name}-failure.png"
-        try:
-            page.screenshot(path=str(screenshot_path), full_page=True)
-            print(f"  saved failure screenshot: {screenshot_path}")
-        except Exception as shot_exc:
-            print(f"  could not save screenshot: {shot_exc}")
+        if target.password_env_var:
+            # No failure screenshot for password-gated targets: a screenshot taken
+            # after a partially-successful login could capture private recipient
+            # data (names, IPs, orgs) in a public repo's downloadable artifacts.
+            print("  skipping failure screenshot (password-gated target)")
+        else:
+            screenshot_dir.mkdir(parents=True, exist_ok=True)
+            screenshot_path = screenshot_dir / f"{target.name}-failure.png"
+            try:
+                page.screenshot(path=str(screenshot_path), full_page=True)
+                print(f"  saved failure screenshot: {screenshot_path}")
+            except Exception as shot_exc:
+                print(f"  could not save screenshot: {shot_exc}")
         return False
     finally:
         page.close()
