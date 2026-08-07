@@ -14,13 +14,12 @@ permissions:
 jobs:
   keep-awake:
     runs-on: ubuntu-latest
-    # Five apps x up to ~4min each for a cold wake (RENDER_POLL_TIMEOUT_S),
+    # Four apps x up to ~4min each for a cold wake (RENDER_POLL_TIMEOUT_S),
     # plus nav/session-hold overhead per app and Playwright setup. The
     # rag-ingestion-evaluation target loads a prebuilt Chroma index plus an
     # ~87MB ONNX model at startup, so its cold wake can run closer to the
-    # render-poll ceiling than the others. cv-tracker adds up to another
-    # ~2min for the password-gate login step (LOGIN_POLL_TIMEOUT_S). Caps a
-    # hung browser well short of burning real minutes.
+    # render-poll ceiling than the others. Caps a hung browser well short of
+    # burning real minutes.
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
@@ -35,8 +34,6 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Run keep-awake script
-        env:
-          CV_TRACKER_PASSWORD: ${{ secrets.CV_TRACKER_PASSWORD }}
         run: python scripts/keep_awake.py --screenshot-dir keep_awake_screenshots
 
       - name: Upload failure screenshots

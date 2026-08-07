@@ -75,15 +75,6 @@ TARGETS = [
         url="https://rag-ingestion-evaluation.streamlit.app",
         heading="RAG Ingestion Evaluation",
     ),
-    Target(
-        name="cv-tracker",
-        url="https://cv-tracker.streamlit.app",
-        # The login screen's own <h1> is plain "CV Tracker" (no emoji) -- matching
-        # on the emoji-prefixed post-login title avoids a false-positive render
-        # check that would pass while the password gate is still showing.
-        heading="\U0001F4CA CV Tracker",
-        password_env_var="CV_TRACKER_PASSWORD",
-    ),
 ]
 
 
