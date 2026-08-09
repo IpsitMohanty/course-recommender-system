@@ -1,0 +1,6 @@
+# Vendored reference material -- the original IBM/Coursera capstone lab
+# notebooks. Executed once as coursework, but superseded by a from-scratch
+# reimplementation (src/): the reproducible pipeline (python -m
+# src.evaluation) never touches these notebooks. Excluded from GitHub's
+# language-detection bar; kept for provenance only.
+notebooks/** linguist-vendored
