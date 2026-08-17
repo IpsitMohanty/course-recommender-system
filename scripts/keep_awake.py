@@ -75,6 +75,11 @@ TARGETS = [
         url="https://rag-ingestion-evaluation.streamlit.app",
         heading="RAG Ingestion Evaluation",
     ),
+    Target(
+        name="cinegraph",
+        url="https://cinegraph.streamlit.app",
+        heading="CineGraph",
+    ),
 ]
 
 
