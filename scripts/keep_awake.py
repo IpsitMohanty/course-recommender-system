@@ -36,7 +36,7 @@ EXCLUDED_FRAME_HOST = "statuspage.io"
 
 NAV_TIMEOUT_MS = 60_000  # generous: a cold app's initial static page can be slow
 WAKE_CLICK_SETTLE_MS = 3_000
-RENDER_POLL_TIMEOUT_S = 240  # observed empirically: a cold wake can take several minutes
+RENDER_POLL_TIMEOUT_S = 90
 RENDER_POLL_INTERVAL_S = 4
 LOGIN_POLL_TIMEOUT_S = 120  # cold app start + Streamlit rerun after submitting the password
 LOGIN_POLL_INTERVAL_S = 3
@@ -107,6 +107,33 @@ def wait_for_app_render(page: Page, expected_heading: str, timeout_s: int) -> st
     raise TimeoutError(f"'{expected_heading}' never rendered within {timeout_s}s")
 
 
+def log_render_diagnostics(
+    page: Page,
+    expected_heading: str,
+    document_statuses: list[int],
+    console_errors: list[str],
+) -> None:
+    status = document_statuses[-1] if document_statuses else "not observed"
+    print(f"  diagnostic: final page URL: {page.url}")
+    print(f"  diagnostic: main document HTTP status: {status}")
+    for frame in page.frames:
+        try:
+            heading_count = frame.locator("h1", has_text=expected_heading).count()
+            print(
+                f"  diagnostic: frame URL={frame.url!r}, "
+                f"matching headings={heading_count}"
+            )
+        except Exception as exc:
+            print(f"  diagnostic: could not inspect frame {frame.url!r}: {exc}")
+
+    if console_errors:
+        print("  diagnostic: browser console errors:")
+        for error in console_errors:
+            print(f"    {error}")
+    else:
+        print("  diagnostic: no browser console errors captured")
+
+
 def log_in(page: Page, target: Target, timeout_s: int) -> None:
     """Fill and submit a Streamlit password gate for targets that need one."""
     password = os.environ.get(target.password_env_var)
@@ -137,6 +164,22 @@ def process_target(browser, target: Target, screenshot_dir: Path) -> bool:
     """Wake/verify one target. Never raises -- failures are caught and logged."""
     print(f"\n=== {target.name} ({target.url}) ===", flush=True)
     page = browser.new_page(viewport={"width": 1400, "height": 1200})
+    document_statuses = []
+    console_errors = []
+
+    def record_main_document_response(response):
+        if (
+            response.request.resource_type == "document"
+            and response.frame == page.main_frame
+        ):
+            document_statuses.append(response.status)
+
+    def record_console_error(message):
+        if message.type == "error":
+            console_errors.append(message.text)
+
+    page.on("response", record_main_document_response)
+    page.on("console", record_console_error)
     try:
         try:
             page.goto(target.url, wait_until="networkidle", timeout=NAV_TIMEOUT_MS)
@@ -161,7 +204,15 @@ def process_target(browser, target: Target, screenshot_dir: Path) -> bool:
             log_in(page, target, LOGIN_POLL_TIMEOUT_S)
             print("  submitted credentials")
 
-        heading_text = wait_for_app_render(page, target.heading, RENDER_POLL_TIMEOUT_S)
+        try:
+            heading_text = wait_for_app_render(
+                page, target.heading, RENDER_POLL_TIMEOUT_S
+            )
+        except TimeoutError:
+            log_render_diagnostics(
+                page, target.heading, document_statuses, console_errors
+            )
+            raise
         print(f"  rendered: found heading '{heading_text}'")
         print(f"  holding session open for {SESSION_HOLD_S}s so it registers")
         page.wait_for_timeout(SESSION_HOLD_S * 1000)
